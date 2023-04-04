@@ -7,8 +7,17 @@ import {BodyUserComponent} from "./frontOffice/body-user/body-user.component";
 import {TestComponent} from "./test/test.component";
 
 const routes: Routes = [
-  {
-    path:'test',component:TestComponent}
+  { path :"", redirectTo:"admin", pathMatch:"full"},
+  { path :'admin', component:AllTemplateAdminComponent,
+    children:[
+      {path:"",component:BodyAdminComponent}
+    ]},
+  { path :'user', component:AllTemplateUserComponent,
+    children:[
+      {path:"",component:BodyUserComponent}
+    ]},
+
+  {path:"**",component:TestComponent}
 ];
 
 @NgModule({
