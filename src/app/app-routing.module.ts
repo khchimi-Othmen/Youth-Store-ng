@@ -4,7 +4,6 @@ import {AllTemplateAdminComponent} from "./backOffice/all-template-admin/all-tem
 import {BodyAdminComponent} from "./backOffice/body-admin/body-admin.component";
 import {AllTemplateUserComponent} from "./frontOffice/all-template-user/all-template-user.component";
 import {BodyUserComponent} from "./frontOffice/body-user/body-user.component";
-import {TestComponent} from "./test/test.component";
 
 const routes: Routes = [
   { path :"", redirectTo:"admin", pathMatch:"full"},
@@ -17,7 +16,7 @@ const routes: Routes = [
       {path:"",component:BodyUserComponent}
     ]},
 
-  {path:"**",component:TestComponent}
+  {path:"**",component:AllTemplateUserComponent}
 ];
 
 @NgModule({
