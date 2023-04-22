@@ -30,6 +30,7 @@ import { CmdComponent } from './pages/back/cmd/cmd/cmd.component';
 import { CmdMainComponent } from './pages/back/cmd/cmd-main/cmd-main.component';
 import { AddCmdComponent } from './pages/back/cmd/add-cmd/add-cmd.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

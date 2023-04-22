@@ -1,108 +1,111 @@
 <div class="container mt-2">
-  <div class="row row-cols-1 row-cols-md-3 g-3">
+  <!-- Search bar -->
+  <div class="row justify-content-center my-4">
+    <div class="col-md-6">
+      <div class="input-group" style="width: 100%;">
+        <input type="text" class="form-control" placeholder="Search for commands by ID" [(ngModel)]="searchValue">
+        <button class="btn btn-primary ms-2" type="button" (click)="searchCmd()" aria-label="Search">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command list -->
+  <div class="card-group">
     <div class="col">
-      <div class="bg-secondary rounded p-3 mb-1" *ngFor="let command of commandList">
+      <!-- Command details -->
+      <div class="card bg-secondary rounded p-3 mb-3" *ngFor="let command of commandList">
         <div class="row">
+          <!-- Command information -->
           <div class="col-md-4 border-end">
             <div class="row mb-2">
               <div class="col-auto">
                 <i class="fas fa-info-circle text-danger"></i>
-                <span class="ms-2 fw-bold" aria-label="Invoice Number">Inv. No.</span>
-              </div>
-              <div class="col-auto ms-auto">
-                {{ command.commandeNumber }}
+                <span class="ms-2 fw-bold command-info-label" aria-label="Invoice Number">
+                  Invoice Ref.
+                </span>
+                <span class="copy-to-clipboard ms-auto" aria-label="Copy Command Reference" (click)="copyToClipboard(command.ref)" [ngClass]="{'copied': isCopied}">
+                  <i class="far fa-copy"></i>
+                </span>
               </div>
             </div>
-<!--            <div class="row mb-2">-->
-<!--              <div class="col-auto">-->
-<!--                <i class="fas fa-user text-danger"></i>-->
-<!--                <span class="ms-2 fw-bold" aria-label="Customer Name">Name</span>-->
-<!--              </div>-->
-<!--              <div class="col-auto ms-auto">-->
-<!--                {{ command.user.nom }}-->
-<!--              </div>-->
-<!--            </div>-->
+
             <div class="row mb-2">
               <div class="col-auto">
                 <i class="fas fa-calendar-check text-danger"></i>
-                <span class="ms-2 fw-bold" aria-label="Date">Date</span>
+                <span class="ms-2 fw-bold command-info-label" aria-label="Date">
+                  Date
+                </span>
               </div>
-              <div class="col-auto ms-auto">
+              <div class="col-auto ms-auto command-info-value">
                 {{ command.deliveryDate | date: 'dd/MM/yyyy' }}
               </div>
             </div>
-            <div class="row">
+
+            <div class="row mb-2">
               <div class="col-auto">
-                <i class="fas fa-dollar-sign text-danger"></i>
-                <span class="ms-2 fw-bold" aria-label="Total Amount">Ref</span>
+                <i class="fas fa-truck-loading text-danger"></i>
+                <span class="ms-2 fw-bold command-info-label" aria-label="Weight">
+                  Weight
+                </span>
               </div>
-              <div class="col-auto ms-auto">
-                {{ command.ref }}
+              <div class="col-auto ms-auto command-info-value">
+                {{ command.weight }} Kg
               </div>
             </div>
+
+            <div class="col-auto">
+              <span class="fw-bold command-info-label" aria-label="Product Name">
+                Status:
+              </span>
+              <ng-container [ngSwitch]="command.commandType">
+                <span *ngSwitchCase="'PENDING'" class="command-status-pending"><i class="fas fa-hourglass-half text-warning"></i> Pending</span>
+                <span *ngSwitchCase="'CREATED'" class="command-status-created"><i class="fas fa-check-circle text-success"></i> Confirmed</span>
+                <span *ngSwitchCase="'CONFIRMED'" class="command-status-confirmed"><i class="fas fa-check-circle text-success"></i> Confirmed</span>
+                <span *ngSwitchCase="'CANCELLED'" class="command-status-cancelled"><i class="fas fa-times-circle text-danger"></i> Cancelled</span>
+                <span *ngSwitchDefault class="command-status-unknown"><i class="fas fa-question-circle text-secondary"></i> Unknown</span>
+              </ng-container>
+            </div>
           </div>
+
+
+
+          <!-- Command pricing information -->
           <div class="col-md-4 border-end">
             <div class="row mb-2">
               <div class="col-auto">
-                <i class="fas fa-shopping-cart text-danger"></i>
-                <span class="ms-2 fw-bold" aria-label="Product Name">Product</span>
+                <span class="fw-bold command-info-label" aria-label="Quantity">Weight</span>
               </div>
-              <div class="col-auto ms-auto">
-                {{ command.commandType }}
-              </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-auto">
-                <span class="fw-bold" aria-label="Quantity">Qty</span>
-              </div>
-              <div class="col-auto ms-auto">
-                {{ command.weight | number: '1.2-2' }} Kg
+              <div class="col-auto ms-auto command-info-value">
+                {{ command.weight  }} Kg
               </div>
             </div>
             <div class="row mb-2">
               <div class="col-auto">
-                <span class="fw-bold" aria-label="Unit Price">Price</span>
+                <span class="fw-bold command-info-label" aria-label="Unit Price"> Unit Price</span>
               </div>
-              <div class="col-auto ms-auto">
-                {{ command.weight }} €/Kg
+              <div class="col-auto ms-auto command-info-value">
+                {{ command.totalC}} €
               </div>
             </div>
-            <div class="row">
-              <div class="col-auto">
-                <span class="fw-bold" aria-label="Total Price">Total</span>
-              </div>
-              <div class="col-auto ms-auto">
-                {{ command.totalC }} €
-              </div>
+            <div class="col-auto">
+              <span class="fw-bold command-info-label" aria-label="Total Price">Total</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.totalC }} €
             </div>
           </div>
-          <div class="col-md-2">
-            <div class="row g-2">
-              <div class="col-6">
-                <button class="btn btn-primary" type="button" onclick="increaseQuantity()">+</button>
-              </div>
-              <div class="col-6">
-                <button class="btn btn-primary" type="button" onclick="decreaseQuantity()">-</button>
-              </div>
+        </div>
+
+          <div class="row">
+            <div class="col-auto">
+              <button class="btn btn-danger btn-sm" (click)="cancelCommand(command.commandeNumber)">Cancel</button>
+            </div>
+            <div class="col-auto ms-auto">
+              <button class="btn btn-secondary btn-sm" (click)="deleteCommand(command.commandeNumber)">Delete</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-</div>
-<script>
-  function increaseQuantity() {
-    let quantity = parseInt(document.getElementById("quantity").value);
-    quantity++;
-    document.getElementById("quantity").value = quantity;
-  }
-  function decreaseQuantity() {
-    let quantity = parseInt(document.getElementById("quantity").value);
-    if (quantity > 1) {
-      quantity--;
-      document.getElementById("quantity").value = quantity;
-    }
-  }
-</script>
+

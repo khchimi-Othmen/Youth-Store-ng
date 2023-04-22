@@ -54,4 +54,10 @@ export class CommandService {
   finalizeCommand(commandId: number): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/${commandId}/finalize`, null);
   }
+  getCommandByRef(ref: string): Observable<CommandDto> {
+    const url = `${this.baseUrl}/getCommandByRef/${ref}`;
+    return this.http.get<CommandDto>(url);
+  }
+
+
 }

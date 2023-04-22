@@ -1,0 +1,8 @@
+.copy-to-clipboard {
+  transition: all 0.3s ease;
+}
+
+.copy-to-clipboard.copied {
+  color: #de313c;
+  transform: scale(1.2);
+}
