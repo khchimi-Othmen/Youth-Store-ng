@@ -1,0 +1,56 @@
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="bg-secondary rounded h-100 p-4">
+      <form #addItemForm="ngForm" (submit)="addProduct(product)">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="product.name" required>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" [(ngModel)]="product.description" required></textarea>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter price" [(ngModel)]="product.price"
+                   name="price" maxlength="4" min="0" required #price="ngModel" [class.is-invalid]="price?.invalid && price?.touched">
+            <span style="color: crimson" *ngIf="price?.errors?.['maxlength']">MaxLength is 6</span>
+            <span style="color: crimson" *ngIf="price?.invalid?.['min']">min="0"</span>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="producer" class="form-label">Producer</label>
+            <input type="text" class="form-control" name="producer" id="producer" [(ngModel)]="product.producer" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="promotion" class="form-label">Promotion</label>
+            <input type="text" class="form-control" name="promotion" id="promotion" [(ngModel)]="product.promotion" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="quantityAvailable" class="form-label">Quantity Available</label>
+            <input type="number" class="form-control" name="quantityAvailable" id="quantityAvailable" [(ngModel)]="product.quantityAvailable" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="isRental" name="isRental" [(ngModel)]="product.isRental">
+              <label class="form-check-label" for="isRental">Is Rental?</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" name="category" id="category" [(ngModel)]="product.category" required>
+              <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+            </select>
+            <p>Selected category: {{product.category?.name}}</p>
+          </div>
+
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="addItemForm.invalid" >Add Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

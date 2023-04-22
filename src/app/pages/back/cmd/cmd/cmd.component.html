@@ -1,0 +1,108 @@
+<div class="container mt-2">
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="col">
+      <div class="bg-secondary rounded p-3 mb-1" *ngFor="let command of commandList">
+        <div class="row">
+          <div class="col-md-4 border-end">
+            <div class="row mb-2">
+              <div class="col-auto">
+                <i class="fas fa-info-circle text-danger"></i>
+                <span class="ms-2 fw-bold" aria-label="Invoice Number">Inv. No.</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.commandeNumber }}
+              </div>
+            </div>
+<!--            <div class="row mb-2">-->
+<!--              <div class="col-auto">-->
+<!--                <i class="fas fa-user text-danger"></i>-->
+<!--                <span class="ms-2 fw-bold" aria-label="Customer Name">Name</span>-->
+<!--              </div>-->
+<!--              <div class="col-auto ms-auto">-->
+<!--                {{ command.user.nom }}-->
+<!--              </div>-->
+<!--            </div>-->
+            <div class="row mb-2">
+              <div class="col-auto">
+                <i class="fas fa-calendar-check text-danger"></i>
+                <span class="ms-2 fw-bold" aria-label="Date">Date</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.deliveryDate | date: 'dd/MM/yyyy' }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-auto">
+                <i class="fas fa-dollar-sign text-danger"></i>
+                <span class="ms-2 fw-bold" aria-label="Total Amount">Ref</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.ref }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 border-end">
+            <div class="row mb-2">
+              <div class="col-auto">
+                <i class="fas fa-shopping-cart text-danger"></i>
+                <span class="ms-2 fw-bold" aria-label="Product Name">Product</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.commandType }}
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-auto">
+                <span class="fw-bold" aria-label="Quantity">Qty</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.weight | number: '1.2-2' }} Kg
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-auto">
+                <span class="fw-bold" aria-label="Unit Price">Price</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.weight }} €/Kg
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-auto">
+                <span class="fw-bold" aria-label="Total Price">Total</span>
+              </div>
+              <div class="col-auto ms-auto">
+                {{ command.totalC }} €
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="row g-2">
+              <div class="col-6">
+                <button class="btn btn-primary" type="button" onclick="increaseQuantity()">+</button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-primary" type="button" onclick="decreaseQuantity()">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  function increaseQuantity() {
+    let quantity = parseInt(document.getElementById("quantity").value);
+    quantity++;
+    document.getElementById("quantity").value = quantity;
+  }
+  function decreaseQuantity() {
+    let quantity = parseInt(document.getElementById("quantity").value);
+    if (quantity > 1) {
+      quantity--;
+      document.getElementById("quantity").value = quantity;
+    }
+  }
+</script>
