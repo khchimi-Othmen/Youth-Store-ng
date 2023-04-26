@@ -40,6 +40,7 @@ export class PromoComponent implements OnInit {
         this.promotionAdded = true;
       });
     });
+    this.onReturn();
   }
   applyPercentageDiscount() {
     console.log('Applying percentage discount to product...');
@@ -57,11 +58,15 @@ export class PromoComponent implements OnInit {
     console.log('Applying ---- discount to product...');
     console.log('Product Id: ', this.product.productId);
     console.log('subtractDiscount : ', this.subtractDiscount);
-    this.itemService.updateProduct(this.product).subscribe(() => {
-      this.promotionService.applyDiscountToProduct(this.product.productId, this.subtractDiscount).subscribe(() => {
-        console.log('subtractDiscount  applied successfully');
-      });
+    this.promotionService.applyDiscountToProduct(this.product.productId, this.subtractDiscount).subscribe(() => {
+      console.log('subtractDiscount applied successfully');
     });
+    // this.itemService.updateProduct(this.product).subscribe(() => {
+    //   this.promotionService.applyDiscountToProduct(this.product.productId, this.subtractDiscount).subscribe(() => {
+    //     console.log('subtractDiscount  applied successfully');
+    //   });
+    // });
+    this.onReturn();
   }
 
 
@@ -77,7 +82,9 @@ export class PromoComponent implements OnInit {
   }
 
   onReturn() {
-    this.router.navigate(['/admin/items']);
+    setTimeout(() => {
+      this.router.navigate(['/admin/items']);
+    }, 2000);
   }
 
   onCancel() {

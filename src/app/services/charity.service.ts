@@ -8,7 +8,7 @@ import {CharityDto} from "../dto/CharityDto";
 })
 export class CharityService {
 
-  private baseUrl = 'http://localhost:8080/charity';
+  private baseUrl = 'http://localhost:8075/charity';
 
   constructor(private http: HttpClient) { }
 

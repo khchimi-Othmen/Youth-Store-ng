@@ -8,104 +8,166 @@
       </div>
     </div>
   </div>
-
   <!-- Command list -->
-  <div class="card-group">
-    <div class="col">
-      <!-- Command details -->
-      <div class="card bg-secondary rounded p-3 mb-3" *ngFor="let command of commandList">
-        <div class="row">
-          <!-- Command information -->
-          <div class="col-md-4 border-end">
-            <div class="row mb-2">
-              <div class="col-auto">
-                <i class="fas fa-info-circle text-danger"></i>
-                <span class="ms-2 fw-bold command-info-label" aria-label="Invoice Number">
-                  Invoice Ref.
-                </span>
-                <span class="copy-to-clipboard ms-auto" aria-label="Copy Command Reference" (click)="copyToClipboard(command.ref)" [ngClass]="{'copied': isCopied}">
-                  <i class="far fa-copy"></i>
-                </span>
-              </div>
-            </div>
+  <div class="card bg-secondary rounded p-3 mb-3" *ngFor="let command of commandList">
+    <div class="card-body">
+      <div class="row">
+        <!-- Left block -->
+        <div class="col-md-4 border-end">
+          <h4 class="card-title">Delivery Details</h4>
 
-            <div class="row mb-2">
-              <div class="col-auto">
-                <i class="fas fa-calendar-check text-danger"></i>
-                <span class="ms-2 fw-bold command-info-label" aria-label="Date">
-                  Date
-                </span>
-              </div>
-              <div class="col-auto ms-auto command-info-value">
-                {{ command.deliveryDate | date: 'dd/MM/yyyy' }}
-              </div>
-            </div>
-
-            <div class="row mb-2">
-              <div class="col-auto">
-                <i class="fas fa-truck-loading text-danger"></i>
-                <span class="ms-2 fw-bold command-info-label" aria-label="Weight">
-                  Weight
-                </span>
-              </div>
-              <div class="col-auto ms-auto command-info-value">
-                {{ command.weight }} Kg
-              </div>
-            </div>
-
+          <div class="row mb-2">
             <div class="col-auto">
-              <span class="fw-bold command-info-label" aria-label="Product Name">
-                Status:
+              <i class="fas fa-calendar-check text-danger"></i>
+              <span class="ms-2 fw-bold">Date</span>
+            </div>
+            <div class="col-auto ms-auto">
+              {{ command.deliveryDate | date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-weight text-danger"></i>
+              <span class="ms-2 fw-bold">Weight</span>
+            </div>
+            <div class="col-auto ms-auto">
+              {{ command.weight }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-heart text-danger"></i>
+              <span class="ms-2 fw-bold">Donation</span>
+            </div>
+            <div class="col-auto ms-auto">
+              <span *ngIf="command.donation">
+                <i class="fas fa-check-circle text-success"></i>
               </span>
+              <span *ngIf="!command.donation">
+                <i class="fas fa-times-circle text-danger"></i>
+              </span>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-handshake text-danger"></i>
+              <span class="ms-2 fw-bold">Charity</span>
+            </div>
+            <div class="col-auto ms-auto">
+              <a href="{{ command.charity.website }}" target="_blank">{{ command.charity.website }}</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle block -->
+        <div class="col-md-4 border-end">
+          <h4>Invoice Details</h4>
+
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-info-circle text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Invoice Number">Invoice Ref.</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.ref }}
+              <span class="copy-to-clipboard ms-auto" aria-label="Copy Command Reference" (click)="copyToClipboard(command.ref)" [ngClass]="{'copied': isCopied}">
+                <i class="far fa-copy"></i>
+              </span>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-credit-card text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Payment Method</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.paymentMethod }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-money-bill-alt text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Total price</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.totalC }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-percent text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Discount Amount</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.discountAmount }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-circle text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Status</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
               <ng-container [ngSwitch]="command.commandType">
-                <span *ngSwitchCase="'PENDING'" class="command-status-pending"><i class="fas fa-hourglass-half text-warning"></i> Pending</span>
-                <span *ngSwitchCase="'CREATED'" class="command-status-created"><i class="fas fa-check-circle text-success"></i> Confirmed</span>
-                <span *ngSwitchCase="'CONFIRMED'" class="command-status-confirmed"><i class="fas fa-check-circle text-success"></i> Confirmed</span>
-                <span *ngSwitchCase="'CANCELLED'" class="command-status-cancelled"><i class="fas fa-times-circle text-danger"></i> Cancelled</span>
+                <span *ngSwitchCase=CmdType.PENDING class="command-status-pending"><i class="fas fa-hourglass-half text-warning"></i> </span>
+                <span *ngSwitchCase=CmdType.CREATED class="command-status-created"><i class="fas fa-check-circle text-success"></i> </span>
+                <span *ngSwitchCase=CmdType.CONFIRMED class="command-status-confirmed"><i class="fas fa-check-circle text-success"></i> </span>
+                <span *ngSwitchCase=CmdType.CANCELLED class="command-status-cancelled"><i class="fas fa-times-circle text-danger"></i> </span>
                 <span *ngSwitchDefault class="command-status-unknown"><i class="fas fa-question-circle text-secondary"></i> Unknown</span>
               </ng-container>
             </div>
           </div>
-
-
-
-          <!-- Command pricing information -->
-          <div class="col-md-4 border-end">
-            <div class="row mb-2">
-              <div class="col-auto">
-                <span class="fw-bold command-info-label" aria-label="Quantity">Weight</span>
-              </div>
-              <div class="col-auto ms-auto command-info-value">
-                {{ command.weight  }} Kg
-              </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-auto">
-                <span class="fw-bold command-info-label" aria-label="Unit Price"> Unit Price</span>
-              </div>
-              <div class="col-auto ms-auto command-info-value">
-                {{ command.totalC}} €
-              </div>
-            </div>
-            <div class="col-auto">
-              <span class="fw-bold command-info-label" aria-label="Total Price">Total</span>
-            </div>
-            <div class="col-auto ms-auto command-info-value">
-              {{ command.totalC }} €
-            </div>
+          <div class="col-auto ms-auto">
+            <button [disabled]="command.commandType === CmdType.CANCELLED" class="btn btn-danger btn-sm" (click)="cancelCommand(command.commandeNumber)">Cancel</button>
           </div>
         </div>
 
-          <div class="row">
+        <!-- Right block -->
+        <div class="col-md-4">
+          <h4>Customer Details</h4>
+
+          <div class="row mb-2">
             <div class="col-auto">
-              <button class="btn btn-danger btn-sm" (click)="cancelCommand(command.commandeNumber)">Cancel</button>
+              <i class="fas fa-user text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Name</span>
             </div>
-            <div class="col-auto ms-auto">
-              <button class="btn btn-secondary btn-sm" (click)="deleteCommand(command.commandeNumber)">Delete</button>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.user.nom }}
             </div>
           </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-envelope text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Email</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.user.email }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-phone text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Phone</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.user.prenom }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-auto">
+              <i class="fas fa-map-marker text-danger"></i>
+              <span class="ms-2 fw-bold command-info-label" aria-label="Payment Method">Address</span>
+            </div>
+            <div class="col-auto ms-auto command-info-value">
+              {{ command.user.prenom }}
+            </div>
+          </div>
+        </div>
+        <div class="col-auto ms-auto">
+          <button class="btn btn-secondary btn-sm" (click)="deleteCommand(command.commandeNumber)"><i class="fas fa-trash-alt text-danger"></i> </button>
         </div>
       </div>
     </div>
   </div>
+</div>
 

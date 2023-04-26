@@ -1,0 +1,15 @@
+<div class="container-fluid py-5">
+  <div class="row g-4 justify-content-center">
+    <div class="col-lg-6 col-md-8 bg-secondary rounded p-4">
+      <img class="img-fluid mb-4" src="/assets/product.PNG" alt="Charity Image" height="444" width="566">
+      <h2 class="mb-4">{{ charity.name }}</h2>
+      <ul class="list-unstyled mb-4">
+        <li><strong>Description:</strong> {{ charity.description }}</li>
+        <li><strong>Website:</strong> <a href="{{ charity.website }}" target="_blank">{{ charity.website }}</a></li>
+      </ul>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-secondary me-md-2" routerLink="/admin/char">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

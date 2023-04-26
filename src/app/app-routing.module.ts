@@ -14,8 +14,11 @@ import {EditCatComponent} from "./pages/back/categories/edit-cat/edit-cat.compon
 import {CatDetailsComponent} from "./pages/back/categories/cat-details/cat-details.component";
 import {PromoComponent} from "./pages/back/promo/promo/promo.component";
 import {CmdComponent} from "./pages/back/cmd/cmd/cmd.component";
-import {CmdMainComponent} from "./pages/back/cmd/cmd-main/cmd-main.component";
-import {AddCmdComponent} from "./pages/back/cmd/add-cmd/add-cmd.component";
+import {CharComponent} from "./pages/back/charities/char/char.component";
+import {AddCharComponent} from "./pages/back/charities/add-char/add-char.component";
+import {CharDetailComponent} from "./pages/back/charities/char-detail/char-detail.component";
+import {EditCharComponent} from "./pages/back/charities/edit-char/edit-char.component";
+import {DashboardComponent} from "./pages/back/dashboard/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -35,7 +38,11 @@ const routes: Routes = [
       { path: 'detailsC/:id', component: CatDetailsComponent },
       { path: 'promo/:id', component: PromoComponent },
       { path: 'cmd', component: CmdComponent },
-      { path: 'addcmd', component: AddCmdComponent },
+      { path: 'char', component: CharComponent },
+      { path: 'addChar', component: AddCharComponent },
+      { path: 'detailsChar/:id', component: CharDetailComponent },
+      { path: 'editChar/:id', component: EditCharComponent },
+      { path: 'dash', component: DashboardComponent },
     ]
   },
   {

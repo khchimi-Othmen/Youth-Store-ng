@@ -27,7 +27,7 @@
       <!-- Loop through categories -->
       <div *ngFor="let category of categoryList" class="col-md-4 mb-4">
         <div class="card bg-secondary rounded">
-          <img class="card-img-top" src="/assets/product.PNG" alt="Category Image">
+          <img class="card-img-top" ngSrc="/assets/product.PNG" alt="Category Image" height="444" width="566">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <p class="card-text fw-bold">{{category.name}}</p>
@@ -49,8 +49,6 @@
       </div>
     </div>
   </div>
-
-
 
 
   <div class="row justify-content-center my-4">

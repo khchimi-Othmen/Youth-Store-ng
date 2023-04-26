@@ -33,7 +33,9 @@ export class PromotionService {
   }
 
   applyDiscountToProduct(productId: number, discount: number) {
-    return this.http.put(this.url + '/' + productId + '/' + discount + '/applyDiscountToProduct', null);
+    const url = `${this.url}/applyDiscountToProduct?productId=${productId}&discount=${discount}`;
+    console.log('URL: ', url);
+    return this.http.put(url, null);
   }
 
   applyPercentageDiscountToProduct(productId: number, percentageDiscount: number) {

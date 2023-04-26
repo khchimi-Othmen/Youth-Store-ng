@@ -5,6 +5,7 @@ import {CmdType} from "./CmdType";
 export class CommandDto {
   commandeNumber!: number;
   paymentMethod!: string;
+  commandType!: CmdType ;
   weight!: number;
   deliveryDate!: Date;
   donation!: boolean;
@@ -13,5 +14,4 @@ export class CommandDto {
   totalC!: number ;
   discountAmount!: number;
   ref!: string ;
-  commandType!: CmdType ;
 }

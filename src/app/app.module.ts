@@ -31,6 +31,13 @@ import { CmdMainComponent } from './pages/back/cmd/cmd-main/cmd-main.component';
 import { AddCmdComponent } from './pages/back/cmd/add-cmd/add-cmd.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ClipboardModule } from 'ngx-clipboard';
+import { CharComponent } from './pages/back/charities/char/char.component';
+import { AddCharComponent } from './pages/back/charities/add-char/add-char.component';
+import { CharDetailComponent } from './pages/back/charities/char-detail/char-detail.component';
+import {NgOptimizedImage} from "@angular/common";
+import { EditCharComponent } from './pages/back/charities/edit-char/edit-char.component';
+import { DashboardComponent } from './pages/back/dashboard/dashboard/dashboard.component';
+import { ChartComponent } from './pages/back/dashboard/chart/chart.component';
 
 
 @NgModule({
@@ -60,16 +67,22 @@ import { ClipboardModule } from 'ngx-clipboard';
     CmdComponent,
     CmdMainComponent,
     AddCmdComponent,
-
+    CharComponent,
+    AddCharComponent,
+    CharDetailComponent,
+    EditCharComponent,
+    DashboardComponent,
+    ChartComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    ClipboardModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        ClipboardModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

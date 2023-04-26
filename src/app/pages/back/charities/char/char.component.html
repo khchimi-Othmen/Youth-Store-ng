@@ -1,0 +1,55 @@
+<div class="container">
+  <!-- Header -->
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h1 class="fw-bold">Liste des charities</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <!-- Import, export, and add buttons -->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-primary me-2"><i class="bi bi-upload"></i> Importer</button>
+        <button type="button" class="btn btn-outline-primary me-2"><i class="bi bi-download"></i> Exporter</button>
+        <a class="btn btn-primary" routerLink="/admin/addChar"><i class="bi bi-plus"></i> Nouveau</a>
+      </div>
+    </div>
+  </div>
+
+<!--  &lt;!&ndash; Search bar &ndash;&gt;-->
+<!--  <div class="row justify-content-center my-4">-->
+<!--    <div class="col-md-6">-->
+<!--      <div class="input-group">-->
+<!--        <input type="text" class="form-control" placeholder="Rechercher des produits par nom" [(ngModel)]="searchValue">-->
+<!--        <button class="btn btn-primary" type="button" (click)="searchProducts()" aria-label="Rechercher">Recherche</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!-- Product cards -->
+  <div class="row">
+    <div class="card-group">
+      <!-- Loop through products: cette méthode est utilisée pour sélectionner une partie d'un tableau afin de l'afficher dans une page spécifique lors de la pagination. -->
+      <div *ngFor="let p of charityList" class="col-md-4 mb-4">
+        <div class="card bg-secondary rounded">
+          <img class="card-img-top" src="/assets/product.PNG" alt="Product Image">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text fw-bold">{{p.name}}</p>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-between mt-3">
+              <a class="btn btn-primary" routerLink="/admin/detailsChar/{{ p.id }}"><i class="bi bi-info-circle"></i> Details</a>
+              <div>
+                <a class="btn btn-primary me-2" routerLink="/admin/editChar/{{ p.id }}"><i class="bi bi-pencil"></i> </a>
+                <button class="btn btn-danger" (click)="deleteCharities(p.id)"><i class="bi bi-trash"></i> </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Mis à jour il y a 3 minutes</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

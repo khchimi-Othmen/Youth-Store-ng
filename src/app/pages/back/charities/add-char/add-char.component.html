@@ -1,0 +1,36 @@
+<!-- updated HTML code -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="bg-secondary rounded h-100 p-4">
+      <form #addItemForm="ngForm" (submit)="addCharity(addItemForm)">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="charity.name" required minlength="2" maxlength="50">
+            <div class="invalid-feedback">Name is required and must be between 2 and 50 characters.</div>
+          </div>
+          <div class="col-md-12 mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" [(ngModel)]="charity.description" required minlength="10" maxlength="500"></textarea>
+            <div class="invalid-feedback">Description is required and must be between 10 and 500 characters.</div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="contactInformation">Contact Information</label>
+            <input type="text" class="form-control" id="contactInformation" name="contactInformation" [(ngModel)]="charity.contactInformation"
+                   pattern="[0-9]{6}" required>
+            <div class="invalid-feedback">Contact Information is required and must be a 6-digit number.</div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="website" class="form-label">Website</label>
+            <input type="url" class="form-control" name="website" id="website" [(ngModel)]="charity.website" required>
+            <div class="invalid-feedback">Website is required and must be a valid URL.</div>
+          </div>
+        </div>
+        <div>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="addItemForm.invalid">Add Charity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,7 @@ export class CmdComponent implements OnInit {
   protected readonly CommandTypeEnum = CmdType;
   commandList: CommandDto[];
   searchValue: string;
+  CmdType = CmdType;
   isCopied = false;
 
   constructor(
@@ -55,6 +56,7 @@ export class CmdComponent implements OnInit {
     });
   }
 
+
   copyToClipboard(commandRef: string): void {
     this.clipboardService.copy(commandRef);
     this.isCopied = true;
@@ -62,4 +64,5 @@ export class CmdComponent implements OnInit {
       this.isCopied = false;
     }, 1000);
   }
+
 }
