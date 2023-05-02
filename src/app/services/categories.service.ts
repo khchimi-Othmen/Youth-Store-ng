@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CategoryDto } from '../dto/CategoryDto';
+import {Observable} from "rxjs";
+import {ProductDto} from "../dto/ProductDto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
 
-  private readonly url = 'http://localhost:8075/categories';
+  private readonly url = 'http://localhost:8080/categories';
 
   constructor(private http: HttpClient) {}
 
@@ -42,4 +44,8 @@ export class CategoriesService {
   assignProductToCategory(productId: number, categoryId: number) {
     return this.http.post(`${this.url}/${productId}/${categoryId}/assignProductToCategory`, null);
   }
+  getProductsByCategory(categoryId: number): Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(`${this.url}/getProductsByCategory/${categoryId}`);
+  }
+
 }

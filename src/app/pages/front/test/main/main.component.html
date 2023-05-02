@@ -1,0 +1,99 @@
+<mat-toolbar color="primary">
+
+  <span>Ecommerce</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="openAddEditForm()">
+    Add
+  </button>
+
+</mat-toolbar>
+<div class="main-body">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="productId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.productId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell *matCellDef="let row"> {{row.price | currency:"TND"}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="producer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Producer </th>
+        <td mat-cell *matCellDef="let row"> {{row.producer}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="available">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Available </th>
+        <td mat-cell *matCellDef="let row"> {{row.available}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="promotion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Promotion </th>
+        <td mat-cell *matCellDef="let row"> {{row.promotion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantityAvailable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity Available </th>
+        <td mat-cell *matCellDef="let row"> {{row.quantityAvailable}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isRental">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Rental </th>
+        <td mat-cell *matCellDef="let row"> {{row.isRental}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sales">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sales </th>
+        <td mat-cell *matCellDef="let row"> {{row.sales}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+        <td mat-cell *matCellDef="let row"> {{row.category?.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row.data)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteProduct(row.productId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+</div>
+
+

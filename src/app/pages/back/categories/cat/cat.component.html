@@ -15,8 +15,8 @@
   <div class="row justify-content-center my-4">
     <div class="col-md-6">
       <div class="input-group">
-        <input class="form-control mr-sm-2" type="search" placeholder="Rechercher par nom" aria-label="Search" [(ngModel)]="categoryName">
-        <button class="btn btn-primary mt-2" (click)="searchCategories(categoryName)">Rechercher</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Rechercher par nom" aria-label="Search" [(ngModel)]="categoryName" (keyup)="searchCategories()">
+        <button class="btn btn-primary mt-2" (click)="searchCategories()">Rechercher</button>
       </div>
     </div>
   </div>
@@ -25,10 +25,10 @@
   <div class="row">
     <div class="card-group">
       <!-- Loop through categories -->
-      <div *ngFor="let category of categoryList" class="col-md-4 mb-4">
-        <div class="card bg-secondary rounded">
+      <div *ngFor="let category of categoryList.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage)" class="col-md-4 mb-4">
+        <div class="card bg-light rounded">
           <img class="card-img-top" ngSrc="/assets/product.PNG" alt="Category Image" height="444" width="566">
-          <div class="card-body">
+          <div class="card-body ">
             <div class="d-flex justify-content-between align-items-center">
               <p class="card-text fw-bold">{{category.name}}</p>
             </div>
@@ -51,22 +51,15 @@
   </div>
 
 
+  <!-- pagination buttons -->
   <div class="row justify-content-center my-4">
     <div class="col-md-6">
       <div class="btn-toolbar d-flex justify-content-center" role="toolbar">
         <div class="btn-group me-2" role="group">
-          <button type="button" class="btn btn-primary">1</button>
-          <button type="button" class="btn btn-primary">2</button>
-          <button type="button" class="btn btn-primary">3</button>
-          <button type="button" class="btn btn-primary">4</button>
-        </div>
-        <div class="btn-group me-2" role="group" aria-label="Second group">
-          <button type="button" class="btn btn-secondary">5</button>
-          <button type="button" class="btn btn-secondary">6</button>
-          <button type="button" class="btn btn-secondary">7</button>
-        </div>
-        <div class="btn-group" role="group" aria-label="Third group">
-          <button type="button" class="btn btn-info">8</button>
+          <!-- Generate pagination buttons based on the total number of pages -->
+          <button *ngFor="let page of totalPages" type="button" class="btn btn-primary"
+                  [class.active]="currentPage === page"
+                  (click)="currentPage = page">{{page}}</button>
         </div>
       </div>
     </div>

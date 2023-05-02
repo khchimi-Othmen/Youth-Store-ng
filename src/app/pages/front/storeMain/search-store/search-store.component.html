@@ -1,0 +1,4 @@
+<div class="input-group">
+  <input type="text" class="form-control input-lg" placeholder="Rechercher des produits par nom" [(ngModel)]="searchValue" (keyup)="searchProducts()">
+  <button class="btn btn-primary" type="button" (click)="searchProducts()" aria-label="Rechercher">Recherche</button>
+</div>

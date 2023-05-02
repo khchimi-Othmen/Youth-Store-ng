@@ -1,0 +1,33 @@
+
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+    <div class="d-flex align-items-center justify-content-between mb-4" >
+      <h6 class="mb-0">Top Selling Items</h6>
+<!--      <a href="#">Show All</a>-->
+    </div>
+    <div class="table-responsive" *ngFor="let product of dashboardData; let i = index;" [attr.data-wow-delay]="'0.'+i+'s'">
+      <table class="table text-start align-middle table-bordered table-hover mb-0" >
+        <thead>
+        <tr class="text-dark">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity Available</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantityAvailable }}</td>
+
+          <td><a routerLink="/admin/details/{{ product.productId }}" class="btn btn-sm btn-primary">Details</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

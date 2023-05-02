@@ -21,12 +21,12 @@ export class AddCharComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addCharity(addItemForm: NgForm) {
+  addCharity() {
     this.charityService.createCharity(this.charity).subscribe(() => {
-      setTimeout(() => {
-        this.router.navigate(['/admin/char']);
-      }, 500);
     });
+    setTimeout(() => {
+      this.router.navigate(['/admin/char']);
+    }, 500);
   }
 
   onCancel() {

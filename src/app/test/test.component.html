@@ -1,0 +1,28 @@
+<!--first bloc-->
+<div *ngFor="let lineCmd of lineCmdList">
+  <span>Id :{{lineCmd.id}}</span>
+  <span>Product Name: {{ productNameMap.get(lineCmd.id) }}</span>
+  <span>Total : {{lineCmd.total}}</span>
+  <div>
+    <input [(ngModel)]="lineCmd.quantite" />
+    <button (click)="incrementQuantity(lineCmd)">+</button>
+    <button (click)="decrementQuantity(lineCmd)">-</button>
+
+  </div>
+  <div>
+    <input [(ngModel)]="lineCmd.nbrRentalPerDays" />
+    <button (click)="incrementNbrRentalPerDays(lineCmd)">+</button>
+    <button (click)="decrementNbrRentalPerDays(lineCmd)">-</button>
+  </div>
+
+  <button (click)="addToCommand(lineCmd)" type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+          title="Move to the wish list">
+    <i class="fas fa-heart"></i>Add To Command
+  </button>
+
+
+  <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+          title="Remove item" (click)="removeFromCart(lineCmd.id)">
+    <i class="fas fa-trash"></i>
+  </button>
+</div>

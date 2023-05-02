@@ -4,14 +4,15 @@ import {CmdType} from "./CmdType";
 
 export class CommandDto {
   commandeNumber!: number;
-  paymentMethod!: string;
   commandType!: CmdType ;
-  weight!: number;
-  deliveryDate!: Date;
+  paymentMethod!: string;
   donation!: boolean;
-  charity!: CharityDto;
   user!: UserDto;
+  ref!: string ;
+
+  // weight!: number;
+  deliveryDate!: Date;
+  charity!: CharityDto;
   totalC!: number ;
   discountAmount!: number;
-  ref!: string ;
 }

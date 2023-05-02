@@ -1,0 +1,47 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container text-center py-5">
+    <h1 class="display-3 text-white text-uppercase mb-3 animated slideInDown">Invoice details</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb justify-content-center text-uppercase mb-0">
+        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+        <li class="breadcrumb-item text-primary active" aria-current="page">Contact</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="container-fluid">
+  <!-- Address -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <form #editItemForm="ngForm" (submit)="updateCommand(command)">
+        <h3 class="h6 mb-4">Address</h3>
+        <div class="mb-3">
+          <label for="charity">Charity:</label>
+          <input type="text" id="charity" name="charity" class="form-control" [(ngModel)]="command.charity">
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label class="form-label">Payment Method:</label>
+              <select class="select2 form-control select2-hidden-accessible" data-select2-placeholder="Select country" data-select2-id="select2-data-1-gy14" tabindex="-1" aria-hidden="true" [(ngModel)]="command.paymentMethod">
+                <option data-select2-id="select2-data-3-ibs9"></option>
+                <option value="AF">Cash</option>
+                <option value="BS">Hand to hand</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="deliveryDate">Delivery Date:</label>
+              <input type="date" id="deliveryDate" name="deliveryDate" class="form-control" required [(ngModel)]="command.deliveryDate">
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="editItemForm.invalid">Finaliz Commad</button>
+      </form>
+    </div>
+  </div>
+</div>

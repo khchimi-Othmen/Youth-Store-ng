@@ -6,10 +6,11 @@ export class ProductDto {
   description!: string;
   price!: number;
   producer!: string;
-  available!: boolean;
+  available: boolean = true;
   promotion!: string;
   quantityAvailable!: number;
-  isRental!: boolean;
+  isRental: boolean = false;
   sales: number;
   category: CategoryDto;
+
 }

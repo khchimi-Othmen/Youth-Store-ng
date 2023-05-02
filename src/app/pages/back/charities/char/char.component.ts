@@ -4,6 +4,7 @@ import {ItemService} from "../../../../services/item.service";
 import {PromotionService} from "../../../../services/promotion.service";
 import {ProductDto} from "../../../../dto/ProductDto";
 import {CharityService} from "../../../../services/charity.service";
+import {CategoryDto} from "../../../../dto/CategoryDto";
 
 @Component({
   selector: 'app-char',
@@ -12,7 +13,9 @@ import {CharityService} from "../../../../services/charity.service";
 })
 export class CharComponent implements OnInit{
   charityList: CharityDto[];
-
+  currentPage = 1;
+  itemsPerPage = 6;
+  searchValue: any;
   constructor(
     private charityService: CharityService,) { }
 
@@ -34,6 +37,21 @@ export class CharComponent implements OnInit{
       });
     }
   }
+  get totalPages(): number[] {
+    const totalChts = this.charityList.length;
+    const totalPages = Math.ceil(totalChts / this.itemsPerPage);
+    return Array(totalPages).fill(0).map((x, i) => i + 1);
+  }
 
-
+  searchProducts() {
+    this.charityService.searchCharitiesByName(this.searchValue).subscribe(
+      (data: CharityDto[]) => {
+        this.charityList = data;
+      },
+      error => {
+        console.log(error);
+        alert('An error occurred while searching categories.');
+      }
+    );
+  }
 }

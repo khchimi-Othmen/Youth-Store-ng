@@ -7,7 +7,7 @@ import { ProductDto } from '../dto/ProductDto';
 })
 export class PromotionService {
 
-  private readonly url = 'http://localhost:8075/promotions';
+  private readonly url = 'http://localhost:8080/promotions';
 
   constructor(private http: HttpClient) {}
 

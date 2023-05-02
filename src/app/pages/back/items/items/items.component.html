@@ -28,7 +28,7 @@
     <div class="card-group">
       <!-- Loop through products: cette méthode est utilisée pour sélectionner une partie d'un tableau afin de l'afficher dans une page spécifique lors de la pagination. -->
       <div *ngFor="let p of productList.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage)" class="col-md-4 mb-4">
-        <div class="card bg-secondary rounded">
+        <div class="card bg-light rounded">
           <img class="card-img-top" src="/assets/product.PNG" alt="Product Image">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">

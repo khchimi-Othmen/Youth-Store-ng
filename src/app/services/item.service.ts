@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ProductDto} from "../dto/ProductDto";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  private readonly url = 'http://localhost:8075/products';
+  private readonly url = 'http://localhost:8080/products';
 
   constructor(private http: HttpClient) {}
 
@@ -46,5 +47,10 @@ export class ItemService {
 
   PostP(p:ProductDto){
     return this.http.post(this.url + '/createProduct', p);
+  }
+  isProductRental(productId: number): Observable<boolean> {
+    return this.getProductById(productId).pipe(
+      map((product: ProductDto) => product.isRental)
+    );
   }
 }

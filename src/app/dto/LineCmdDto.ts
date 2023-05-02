@@ -8,4 +8,12 @@ export class LineCmdDto {
   nbrRentalPerDays!: number;
   productDto!: ProductDto;
   commandDto!: CommandDto;
+
+  public isProductForRental(): boolean {
+    return this.productDto.isRental;
+  }
+
+  public get productId(): number {
+    return this.productDto.productId;
+  }
 }

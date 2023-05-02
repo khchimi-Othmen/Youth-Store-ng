@@ -8,7 +8,7 @@ import {CharityDto} from "../dto/CharityDto";
 })
 export class CharityService {
 
-  private baseUrl = 'http://localhost:8075/charity';
+  private baseUrl = 'http://localhost:8080/charity';
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +38,8 @@ export class CharityService {
 
   markCommandAsDonationBEFOREFINALIZ(commandId: number): Observable<string> {
     return this.http.put<string>(`${this.baseUrl}/markCommandAsDonationBEFOREFINALIZ/${commandId}`, null);
+  }
+  searchCharitiesByName(name: string): Observable<CharityDto[]> {
+    return this.http.get<CharityDto[]>(`/charities?name=${name}`);
   }
 }

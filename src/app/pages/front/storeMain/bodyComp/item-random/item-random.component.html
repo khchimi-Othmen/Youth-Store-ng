@@ -1,0 +1,27 @@
+
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+      <p class="d-inline-block bg-secondary text-primary py-1 px-4">click on plus icon for more details</p>
+      <h1 class="text-uppercase">You may also like</h1>
+    </div>
+    <div class="row g-4">
+      <div *ngFor="let product of randomProducts"class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
+          <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
+            <img class="img-fluid" src="/assets/front/img/haircut.png" alt="">
+          </div>
+          <div class="ps-4">
+            <h3 class="text-uppercase mb-3">Description</h3>
+            <p>{{product.description}}</p>
+            <span class="text-uppercase text-primary">{{product.price}}</span>
+          </div>
+          <a class="btn btn-square" href=""><i class="fa fa-plus text-primary"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Service End -->

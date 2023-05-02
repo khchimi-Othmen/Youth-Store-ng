@@ -38,7 +38,48 @@ import {NgOptimizedImage} from "@angular/common";
 import { EditCharComponent } from './pages/back/charities/edit-char/edit-char.component';
 import { DashboardComponent } from './pages/back/dashboard/dashboard/dashboard.component';
 import { ChartComponent } from './pages/back/dashboard/chart/chart.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { MainComponent } from './pages/front/test/main/main.component';
+import { SubMainComponent } from './pages/front/test/sub-main/sub-main.component';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { CartComponent } from './pages/back/cart/cart/cart.component';
+import { ItemUComponent } from './pages/front/item/item-u/item-u.component';
+import { StoreComponent } from './pages/front/storeMain/store/store.component';
+import { StoreHeaderComponent } from './pages/front/storeMain/store-header/store-header.component';
+import { SearchStoreComponent } from './pages/front/storeMain/search-store/search-store.component';
+import { SideCatComponent } from './pages/front/storeMain/side-cat/side-cat.component';
+import { CatDetailsStoreComponent } from './pages/front/storeMain/cat-details-store/cat-details-store.component';
+import { NavStoreComponent } from './pages/front/storeMain/nav-store/nav-store.component';
+import { SidePubComponent } from './pages/front/storeMain/side-pub/side-pub.component';
+import { TopSellingComponent } from './pages/front/storeMain/bodyComp/top-selling/top-selling.component';
+import { ItemPromoComponent } from './pages/front/storeMain/bodyComp/item-promo/item-promo.component';
+import { ItemRandomComponent } from './pages/front/storeMain/bodyComp/item-random/item-random.component';
+import { ItemsSlideComponent } from './pages/front/storeMain/bodyComp/items-slide/items-slide.component';
+import { AddToCartComponent } from './pages/front/cart/add-to-cart/add-to-cart.component';
+import { CartMainComponent } from './pages/front/cart/cart-main/cart-main.component';
+import { ItemDetailsUserComponent } from './pages/front/item-details-user/item-details-user.component';
+import {BodyStoreComponent} from "./pages/front/storeMain/body-store/body-store.component";
+import { TestComponent } from './test/test.component';
+import { TesttttComponent } from './testttt/testttt.component';
+import { InvoiceCartComponent } from './pages/front/invoice/invoice-cart/invoice-cart.component';
+import { SecondeItemRandomComponent } from './pages/front/storeMain/bodyComp/seconde-item-random/seconde-item-random.component';
+import { InvoiceUpdateComponent } from './pages/front/invoice/invoice-update/invoice-update.component';
+import { TotalRevenueComponent } from './pages/front/storeMain/bodyComp/total-revenue/total-revenue.component';
+import { SimpleDashComponent } from './pages/back/dashboard/simple-dash/simple-dash.component';
+import { TopDashComponent } from './pages/back/dashboard/top-dash/top-dash.component';
+import { WorstDashComponent } from './pages/back/dashboard/worst-dash/worst-dash.component';
+import { LowDashComponent } from './pages/back/dashboard/low-dash/low-dash.component';
+import { TotalRevenueDashComponent } from './pages/back/dashboard/total-revenue-dash/total-revenue-dash.component';
 
 @NgModule({
   declarations: [
@@ -73,16 +114,59 @@ import { ChartComponent } from './pages/back/dashboard/chart/chart.component';
     EditCharComponent,
     DashboardComponent,
     ChartComponent,
+    MainComponent,
+    SubMainComponent,
+    CartComponent,
+    ItemUComponent,
+    StoreComponent,
+    StoreHeaderComponent,
+    SearchStoreComponent,
+    SideCatComponent,
+    CatDetailsStoreComponent,
+    NavStoreComponent,
+    SidePubComponent,
+    BodyStoreComponent,
+    TopSellingComponent,
+    ItemPromoComponent,
+    ItemRandomComponent,
+    ItemsSlideComponent,
+    AddToCartComponent,
+    CartMainComponent,
+    ItemDetailsUserComponent,
+    TestComponent,
+    TesttttComponent,
+    InvoiceCartComponent,
+    SecondeItemRandomComponent,
+    InvoiceUpdateComponent,
+    TotalRevenueComponent,
+    SimpleDashComponent,
+    TopDashComponent,
+    WorstDashComponent,
+    LowDashComponent,
+    TotalRevenueDashComponent,
+
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        NgxPaginationModule,
-        ClipboardModule,
-        NgOptimizedImage
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    ClipboardModule,
+    NgOptimizedImage,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    RouterModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

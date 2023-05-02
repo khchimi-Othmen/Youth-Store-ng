@@ -14,22 +14,22 @@
     </div>
   </div>
 
-<!--  &lt;!&ndash; Search bar &ndash;&gt;-->
-<!--  <div class="row justify-content-center my-4">-->
-<!--    <div class="col-md-6">-->
-<!--      <div class="input-group">-->
-<!--        <input type="text" class="form-control" placeholder="Rechercher des produits par nom" [(ngModel)]="searchValue">-->
-<!--        <button class="btn btn-primary" type="button" (click)="searchProducts()" aria-label="Rechercher">Recherche</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!-- Search bar -->
+  <div class="row justify-content-center my-4">
+    <div class="col-md-6">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Rechercher des produits par nom" [(ngModel)]="searchValue " (keyup)="searchProducts()">
+        <button class="btn btn-primary" type="button" (click)="searchProducts()" aria-label="Rechercher">Recherche</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Product cards -->
   <div class="row">
     <div class="card-group">
       <!-- Loop through products: cette méthode est utilisée pour sélectionner une partie d'un tableau afin de l'afficher dans une page spécifique lors de la pagination. -->
-      <div *ngFor="let p of charityList" class="col-md-4 mb-4">
-        <div class="card bg-secondary rounded">
+      <div *ngFor="let p of charityList.slice((currentPage-1)*itemsPerPage, currentPage*itemsPerPage)" class="col-md-4 mb-4">
+        <div class="card bg-light rounded">
           <img class="card-img-top" src="/assets/product.PNG" alt="Product Image">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
@@ -48,6 +48,19 @@
           <div class="card-footer">
             <small class="text-muted">Mis à jour il y a 3 minutes</small>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- pagination buttons -->
+  <div class="row justify-content-center my-4">
+    <div class="col-md-6">
+      <div class="btn-toolbar d-flex justify-content-center" role="toolbar">
+        <div class="btn-group me-2" role="group">
+          <!-- Generate pagination buttons based on the total number of pages -->
+          <button *ngFor="let page of totalPages" type="button" class="btn btn-primary"
+                  [class.active]="currentPage === page"
+                  (click)="currentPage = page">{{page}}</button>
         </div>
       </div>
     </div>

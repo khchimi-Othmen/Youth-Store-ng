@@ -1,0 +1,6 @@
+<div>
+  <button (click)="getTotalRevenue()">Get Total Revenue</button>
+  <div *ngIf="totalRevenue !== undefined">
+    Total Revenue: {{ totalRevenue | currency:'USD':'symbol':'1.2-2' }}
+  </div>
+</div>

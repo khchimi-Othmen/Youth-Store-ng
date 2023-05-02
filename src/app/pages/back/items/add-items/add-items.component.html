@@ -1,6 +1,6 @@
 <div class="container-fluid pt-4 px-4">
   <div class="row g-4">
-    <div class="bg-secondary rounded h-100 p-4">
+    <div class=" rounded h-100 p-4 bg-light">
       <form #addItemForm="ngForm" (submit)="addProduct(product)">
         <div class="row">
           <div class="col-md-12 mb-3">
@@ -24,7 +24,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="promotion" class="form-label">Promotion</label>
-            <input type="text" class="form-control" name="promotion" id="promotion" [(ngModel)]="product.promotion" required>
+            <input type="text" class="form-control" name="promotion" id="promotion" [(ngModel)]="product.promotion" >
           </div>
           <div class="col-md-6 mb-3">
             <label for="quantityAvailable" class="form-label">Quantity Available</label>

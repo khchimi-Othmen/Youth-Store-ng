@@ -1,0 +1,7 @@
+<div class="container mt-4">
+  <button class="btn btn-primary" (click)="getTotalRevenue()">Get Total Revenue</button>
+  <div *ngIf="totalRevenue !== undefined" class="mt-4">
+    <h4>Total Revenue:</h4>
+    <h2 class="text-success">{{ totalRevenue | currency:'USD':'symbol':'1.2-2' }}</h2>
+  </div>
+</div>

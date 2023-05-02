@@ -1,0 +1,36 @@
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+      <p class="d-inline-block bg-secondary text-primary py-1 px-4">Youth Camp Store</p>
+      <h1 class="text-uppercase">All Our Products </h1>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6 wow fadeInUp" *ngFor="let product of productList.slice((currentPage-1)*itemsPerSlide, currentPage*itemsPerSlide) let i = index;" [attr.data-wow-delay]="'0.'+i+'s'">
+        <div class="team-item">
+          <div class="team-img position-relative overflow-hidden">
+            <img class="img-fluid" src="assets/img/8c22b3dac9b1f5219cf3f279bc649a9a.jpg" alt="">
+            <div class="team-social">
+              <a class="btn btn-square" (click)="addToCart(product.productId)"><i class="fas fa-shopping-cart"></i></a>
+              <a class="btn btn-square" href=""><i class="fas fa-money-bill-wave"></i></a>
+              <a class="btn btn-square" routerLink="/user/detailsP/{{product.productId}}"><i class="fas fa-info-circle"></i></a>
+            </div>
+          </div>
+          <div class="bg-secondary text-center p-4">
+            <h5 class="text-uppercase">{{ product.name }}</h5>
+            <span class="text-primary">{{ product.description }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slider navigation -->
+    <div class="row justify-content-center my-4">
+      <div class="col-md-6">
+        <div class="slider-navigation d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary" (click)="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+          <span>{{ currentPage }} / {{ totalSlides }}</span>
+          <button class="btn btn-primary" (click)="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

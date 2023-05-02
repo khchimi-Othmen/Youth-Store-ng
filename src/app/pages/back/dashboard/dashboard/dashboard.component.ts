@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getDashboardData() {
-    this.dataService.getDashboardData().subscribe(data => {
+    this.dataService.getLowStockProducts().subscribe(data => {
       this.dashboardData = data;
 
       const labels = this.dashboardData.topSellingProducts.map(

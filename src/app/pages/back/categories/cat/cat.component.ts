@@ -11,6 +11,8 @@ import {CategoriesService} from "../../../../services/categories.service";
 export class CatComponent implements OnInit{
   categoryList: CategoryDto[];
   categoryName: any;
+  currentPage = 1;
+  itemsPerPage = 6;
 
   constructor(private categoriesService :CategoriesService) { }
 
@@ -35,8 +37,8 @@ export class CatComponent implements OnInit{
     }
   }
 
-  searchCategories(categoryName: string) {
-    this.categoriesService.searchCategoriesByName(categoryName).subscribe(
+  searchCategories() {
+    this.categoriesService.searchCategoriesByName(this.categoryName).subscribe(
       (data: CategoryDto[]) => {
         this.categoryList = data;
       },
@@ -47,5 +49,9 @@ export class CatComponent implements OnInit{
     );
   }
 
-
+  get totalPages(): number[] {
+    const totalCats = this.categoryList.length;
+    const totalPages = Math.ceil(totalCats / this.itemsPerPage);
+    return Array(totalPages).fill(0).map((x, i) => i + 1);
+  }
 }

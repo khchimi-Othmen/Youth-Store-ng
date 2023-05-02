@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoyaltyPointsService {
 
-  private readonly url = 'http://localhost:8075/LoyalityPoints';
+  private readonly url = 'http://localhost:8080/LoyalityPoints';
 
   constructor(private http: HttpClient) {}
 
