@@ -14,9 +14,9 @@ In this project, we have used the Template-Driven approach for creating forms in
 
 We have used some Material Design components in this project to create a consistent and modern look and feel for the user interface. Material Design provides a set of pre-built components that are easy to use and customize.
 
-## Front-End and Back-Office
+## Front-Office and Back-Office
 
-This project includes both front-end and back-office components. The front-end is the customer-facing part of the application, where customers can browse products and make purchases. The back-office is the admin-facing part of the application, where administrators can manage products, orders, and customers.
+This project includes both front-Office and back-office components. The front-Office is the customer-facing part of the application, where customers can browse products and make purchases. The back-office is the admin-facing part of the application, where administrators can manage products, orders, and customers.
 
 ## Shopping Cart Scenario
 
