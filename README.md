@@ -1,4 +1,4 @@
-# Angular MVVM and Template-Driven Approach
+# Online_Store(Angular)
 
 This repository contains an Angular project that implements the MVVM pattern and uses a Template-Driven approach. The project also uses Material Design and includes both front-end and back-office components. The shopping cart scenario has been implemented and is working well.
 
