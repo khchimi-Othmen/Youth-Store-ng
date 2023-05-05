@@ -1,27 +1,40 @@
-# TemplateCankod
+# Angular MVVM and Template-Driven Approach
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+This repository contains an Angular project that implements the MVVM pattern and uses a Template-Driven approach. The project also uses Material Design and includes both front-end and back-office components. The shopping cart scenario has been implemented and is working well.
 
-## Development server
+## MVVM Pattern
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Model-View-ViewModel (MVVM) pattern is used to separate the user interface (View) from the business logic and data (Model) by using a ViewModel as an intermediary layer. This makes it easier to maintain and test the application as changes in the View or Model do not affect each other directly.
 
-## Code scaffolding
+## Template-Driven Approach
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In this project, we have used the Template-Driven approach for creating forms in Angular. This approach allows us to define forms using HTML templates and provides built-in validation and error handling.
 
-## Build
+## Material Design
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+We have used some Material Design components in this project to create a consistent and modern look and feel for the user interface. Material Design provides a set of pre-built components that are easy to use and customize.
 
-## Running unit tests
+## Front-End and Back-Office
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This project includes both front-end and back-office components. The front-end is the customer-facing part of the application, where customers can browse products and make purchases. The back-office is the admin-facing part of the application, where administrators can manage products, orders, and customers.
 
-## Running end-to-end tests
+## Shopping Cart Scenario
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The shopping cart scenario has been implemented in this project and is working well. Customers can add products to their cart, update the quantity of products, and remove products from the cart. The total price is calculated automatically based on the products in the cart.
 
-## Further help
+## Getting Started
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get started with this project, follow the steps below:
+
+1. Clone the repository to your local machine.
+2. Install the dependencies using `npm install` command.
+3. Run the application using `ng serve` command.
+4. Navigate to `http://localhost:4200/` in your browser to view the application.
+
+## Contributions
+
+Contributions to this project are welcome! Please feel free to submit pull requests or raise issues for any bugs or feature requests.
+
+## License
+
+This project is licensed under the [MIT license](https://opensource.org/licenses/MIT).
